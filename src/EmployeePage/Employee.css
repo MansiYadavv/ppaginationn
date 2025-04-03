@@ -1,95 +1,95 @@
 /* Main container */
 .employee-container {
-    font-family: Arial, sans-serif;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  /* Table title */
-  .table-title {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 24px;
-  }
-  
-  /* Error message */
-  .error-message {
-    color: red;
-    text-align: center;
-    font-weight: bold;
-  }
-  
-  /* Loading text */
-  .loading-text {
-    text-align: center;
-    font-size: 18px;
-    color: #555;
-  }
-  
-  /* Table styles */
-  .employee-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 30px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  
-  .employee-table th, .employee-table td {
-    border: 1px solid #ddd;
-    padding: 12px 15px;
-    text-align: left;
-  }
-  
-  .employee-table th {
-    background-color: #009879; /* Teal/green color as shown in screenshot */
-    color: white;
-    font-weight: bold;
-  }
-  
-  .employee-table tr:nth-child(even) {
-    background-color: #f8f8f8;
-  }
-  
-  .employee-table tr:nth-child(odd) {
-    background-color: #ffffff;
-  }
-  
-  .employee-table tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  /* Pagination controls */
-  .pagination-controls {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .pagination-button {
-    background-color: #009879; /* Same teal/green color */
-    color: white;
-    border: none;
-    padding: 8px 16px;
-    margin: 0 5px;
-    cursor: pointer;
-    border-radius: 4px;
-    font-size: 14px;
-  }
-  
-  .pagination-button:hover {
-    background-color: #00806a;
-  }
-  
-  .pagination-button:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
-  }
-  
-  .pagination-button.active {
-    background-color: #00806a;
-    font-weight: bold;
-  }
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Table title */
+.table-title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* Error message */
+.error-message {
+  color: red;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Loading text */
+.loading-text {
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+}
+
+/* Table styles */
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.employee-table th, .employee-table td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.employee-table th {
+  background-color: #009879; /* Teal/green color as shown in screenshot */
+  color: white;
+  font-weight: bold;
+}
+
+.employee-table tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+.employee-table tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.employee-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* Pagination controls */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination-button {
+  background-color: #009879; /* Same teal/green color */
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.pagination-button:hover {
+  background-color: #00806a;
+}
+
+.pagination-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.pagination-button.active {
+  background-color: #00806a;
+  font-weight: bold;
+}

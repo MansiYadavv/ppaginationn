@@ -19,7 +19,7 @@ const EmployeeTable = () => {
         setEmployees(data);
       } catch (err) {
         setError(err.message);
-        alert("Failed to fetch data");
+        console.error("Fetch Error:", err);
       } finally {
         setLoading(false);
       }
@@ -27,7 +27,7 @@ const EmployeeTable = () => {
     fetchEmployees();
   }, []);
 
-  const totalPages = Math.ceil(employees.length / ROWS_PER_PAGE);
+  const totalPages = employees.length ? Math.ceil(employees.length / ROWS_PER_PAGE) : 1;
   const startIndex = (currentPage - 1) * ROWS_PER_PAGE;
   const displayedEmployees = employees.slice(startIndex, startIndex + ROWS_PER_PAGE);
 
@@ -37,49 +37,53 @@ const EmployeeTable = () => {
       {error && <p className="error-message">{error}</p>}
       {loading ? (
         <p className="loading-text">Loading...</p>
-      ) : (
-        <table className="employee-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            {displayedEmployees.map((emp) => (
-              <tr key={emp.id}>
-                <td>{emp.id}</td>
-                <td>{emp.name}</td>
-                <td>{emp.email}</td>
-                <td>{emp.role}</td>
+      ) : employees.length > 0 ? (
+        <>
+          <table className="employee-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {displayedEmployees.map((emp) => (
+                <tr key={emp.id}>
+                  <td>{emp.id}</td>
+                  <td>{emp.name}</td>
+                  <td>{emp.email}</td>
+                  <td>{emp.role}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          {/* Pagination Controls */}
+          <div className="pagination-controls">
+            <button 
+              className="pagination-button"
+              onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} 
+              disabled={currentPage === 1}
+            >
+              Previous
+            </button>
+            
+            <span className="pagination-current">{currentPage} / {totalPages}</span>
+            
+            <button 
+              className="pagination-button"
+              onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))} 
+              disabled={currentPage === totalPages}
+            >
+              Next
+            </button>
+          </div>
+        </>
+      ) : (
+        <p className="no-data-text">No employees found.</p>
       )}
-      <div className="pagination-controls">
-        <button 
-          className="pagination-button"
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} 
-          disabled={currentPage === 1}
-        >
-          Previous
-        </button>
-        <button 
-          className="pagination-button active"
-        >
-          {currentPage}
-        </button>
-        <button 
-          className="pagination-button"
-          onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))} 
-          disabled={currentPage === totalPages}
-        >
-          Next
-        </button>
-      </div>
     </div>
   );
 };

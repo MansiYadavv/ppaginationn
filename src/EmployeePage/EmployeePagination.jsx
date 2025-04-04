@@ -67,11 +67,8 @@ const EmployeeTable = () => {
         >
           Previous
         </button>
-        <button 
-          className="pagination-button active"
-        >
-          {currentPage}
-        </button>
+        {/* Add a span to display the current page for the test to find */}
+        <span className="page-info">Page {currentPage} of {totalPages}</span>
         <button 
           className="pagination-button"
           onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))} 

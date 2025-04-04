@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import './Employee.css';
 
@@ -67,8 +68,10 @@ const EmployeeTable = () => {
         >
           Previous
         </button>
-        {/* Add a span to display the current page for the test to find */}
-        <span className="page-info">Page {currentPage} of {totalPages}</span>
+        {/* Add a span to make the page number findable by the test */}
+        <span className="pagination-info">
+          <span className="current-page">{currentPage}</span>
+        </span>
         <button 
           className="pagination-button"
           onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))} 

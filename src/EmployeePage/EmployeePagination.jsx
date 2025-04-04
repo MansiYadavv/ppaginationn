@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import './Employee.css';
 
@@ -31,6 +30,12 @@ const EmployeeTable = () => {
   const totalPages = Math.ceil(employees.length / ROWS_PER_PAGE);
   const startIndex = (currentPage - 1) * ROWS_PER_PAGE;
   const displayedEmployees = employees.slice(startIndex, startIndex + ROWS_PER_PAGE);
+
+  // Create an array of page numbers to display
+  const pageNumbers = [];
+  for (let i = 1; i <= totalPages; i++) {
+    pageNumbers.push(i);
+  }
 
   return (
     <div className="employee-container">
@@ -68,10 +73,19 @@ const EmployeeTable = () => {
         >
           Previous
         </button>
-        {/* Add a span to make the page number findable by the test */}
-        <span className="pagination-info">
-          <span className="current-page">{currentPage}</span>
-        </span>
+        
+        {/* Create numbered page buttons with the exact page number in a span */}
+        {pageNumbers.map(number => (
+          <button 
+            key={number}
+            className={`pagination-button ${currentPage === number ? 'active' : ''}`}
+            onClick={() => setCurrentPage(number)}
+          >
+            {/* This ensures the exact page number is in a span element */}
+            <span>{number}</span>
+          </button>
+        ))}
+        
         <button 
           className="pagination-button"
           onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))} 
